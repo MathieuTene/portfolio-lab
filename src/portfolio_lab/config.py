@@ -1,0 +1,4 @@
+TICKERS = ['SPY', 'QQQ', 'EFA', 'EEM', 'TLT', 'IEF', 'LQD', 'GLD', 'VNQ', 'DBC']
+START = '2012-01-01'
+RISK_FREE = 0.02
+TRADING_DAYS = 252

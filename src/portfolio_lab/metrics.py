@@ -14,12 +14,12 @@ def annualized_return(returns):
     return total ** (TRADING_DAYS / n) - 1
 
 
-def annaulized_vol(returns):
+def annualized_vol(returns):
     return returns.std() * np.sqrt(TRADING_DAYS)
 
 
 def sharpe_ratio(returns, rf=0.0):
-    return (annualized_return(returns) - rf) / annaulized_vol(returns)
+    return (annualized_return(returns) - rf) / annualized_vol(returns)
 
 
 def sortino_ratio(returns, rf=0.0):
@@ -32,7 +32,7 @@ def drawdown_series(returns):
     return wealth / wealth.cummax() - 1
 
 
-def max_drawndown(returns):
+def max_drawdown(returns):
     return drawdown_series(returns).min()
 
 
@@ -48,10 +48,10 @@ def historical_cvar(returns, level=0.95):
 def summary(returns: pd.DataFrame, rf: float = 0.0) -> pd.DataFrame:
     out = pd.DataFrame({
         'Rendement annualisé': annualized_return(returns),
-        'Volatilité annualisée': annaulized_vol(returns),
+        'Volatilité annualisée': annualized_vol(returns),
         'Sharpe': sharpe_ratio(returns, rf),
         'Sortino': sortino_ratio(returns, rf),
-        'Drawdown max': max_drawndown(returns),
+        'Drawdown max': max_drawdown(returns),
         'VaR 95% (jour)': historical_var(returns),
         'CVaR 95% (jour)': historical_cvar(returns)
     })

@@ -42,7 +42,7 @@ def historical_var(returns, level=0.95):
 
 def historical_cvar(returns, level=0.95):
     var = returns.quantile(1 - level)
-    return -returns[returns >= var].mean()
+    return -returns[returns <= var].mean()
 
 
 def summary(returns: pd.DataFrame, rf: float = 0.0) -> pd.DataFrame:
